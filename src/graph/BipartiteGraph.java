@@ -33,7 +33,7 @@ public class BipartiteGraph {
 
         // loop over adjacent nodes
         for (int it: adj.get(node)) {
-            // if adjacent node being visited for first time time set its color to opposite of current node
+            // if adjacent node being visited for first time, set its color to opposite of current node
             // i.e. 1 - color[node] returns 0 or 1 based on current nodes color is 1 or 0 respectively
             if (color[it] == -1) {
                 color[it] = 1 - color[node];

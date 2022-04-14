@@ -53,7 +53,6 @@ public class ReorderList {
         return head;
     }
 
-
     public static void main(String[] args) {
         ListNode head = new ListNode(1);
         ListNode second = new ListNode(2);

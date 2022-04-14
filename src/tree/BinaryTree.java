@@ -99,8 +99,8 @@ public class BinaryTree {
     public static void postorder(Node root) {
         if (root == null) return;
 
-        inorder(root.left);
-        inorder(root.right);
+        postorder(root.left);
+        postorder(root.right);
         System.out.print(root.data + " ");
     }
 

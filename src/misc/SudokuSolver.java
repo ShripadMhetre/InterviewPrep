@@ -67,7 +67,7 @@ public class SudokuSolver {
 
                             if(solveBoard(board)) return true;  // recursively check for remaining places and if everything fits then return true (i.e. board solved)
                             else {
-                                board[row][col] = 0;    // if current placement not solving remaining places then reset to zero
+                                board[row][col] = 0;    // if current placement not solving remaining places, then reset to zero (i.e. backtracking)
                             }
                         }
                     }

@@ -24,7 +24,8 @@ class Node {
 
     1. LRUCache(int capacity) - initializes the cache to store data of size: capacity.
     2. int get(int key) - returns the value of the key if it exists, otherwise returns -1.
-    3. void add(int key, int value) - updates the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.
+    3. void add(int key, int value) - updates the value of the key if the key exists. Otherwise, add the key-value pair to the cache.
+       If the no. of keys exceeds the capacity from this operation, evict the least recently used key.
 
     Note: Try to achieve each operation in O(1) time complexity.
  */
@@ -43,6 +44,8 @@ public class LRUCache {
         if (hm.get(key) == null) return -1;
 
         Node t = hm.get(key);
+
+        // remove from the current position and add it to rear in the queue as the node recently accessed
         removeNode(t);
         addNode(t);
 
@@ -58,8 +61,8 @@ public class LRUCache {
             addNode(t);
         } else {
             if (hm.size() >= capacity) {
-                hm.remove(rear.key);
-                removeNode(rear);
+                hm.remove(front.key);
+                removeNode(front);
             }
 
             Node t = new Node(key, value);
@@ -68,31 +71,33 @@ public class LRUCache {
         }
     }
 
+    // Adds to rear
     public void addNode(Node node) {
-        if (front != null) {
-            front.next = node;
+        if (rear != null) {
+            rear.next = node;
         }
 
-        node.prev = front;
+        node.prev = rear;
         node.next = null;
-        front = node;
+        rear = node;
 
-        if (rear == null) {
-            rear = front;
+        if (front == null) {
+            front = rear;
         }
     }
 
+    // Removes the given node and update front, rear pointers accordingly
     public void removeNode(Node node) {
         if (node.prev != null) {
             node.prev.next = node.next;
         } else {
-            rear = node.next;
+            front = node.next;
         }
 
         if (node.next != null) {
             node.next.prev = node.prev;
         } else {
-            front = node.prev;
+            rear = node.prev;
         }
     }
 }
