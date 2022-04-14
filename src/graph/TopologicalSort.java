@@ -57,7 +57,7 @@ public class TopologicalSort {
             topo[index++] = node;   // adding nodes to topo array as dequeued from queue
 
             for (int it: adj.get(node)) {
-                // subtracting indegree of adjacent nodes by one, as the the current node has been processed.
+                // subtracting indegree of adjacent nodes by one, as the current node has been processed.
                 in[it]--;
 
                 // if indegree becomes zero for any of the adjacent node then add it to queue
