@@ -80,6 +80,7 @@ public class FractionalKnapsack {
         }
         return totalValue;
     }
+
     public static void main(String[] args) {
         Item[] arr = new Item[]{
                 new Item(10,60),

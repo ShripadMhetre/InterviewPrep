@@ -27,6 +27,7 @@ public class MergeKSortedLists {
         return result.next;
     }
 
+    // Time:- O(NlogK)
     public static ListNode mergeKLists(ListNode[] lists, int start, int end) {
         if (start == end) return lists[start];
 

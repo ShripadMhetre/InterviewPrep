@@ -1,35 +1,15 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Test {
+    public static int getOvertakes(int[] ip, int[] op) {
+        return 0;
+    }
+
     public static void main(String[] args) {
-        String x = "60";
-        String y = "548";
-        String z = "547";
-        String w = "9";
+        int[] ip = {10, 20, 30, 40, 50};
+        int[] op = {50, 20, 10, 30, 40};
 
-        List<String> list = new ArrayList<>();
-        list.add(y);
-        list.add(x);
-        list.add(z);
-        list.add(w);
-
-        Collections.sort(list, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return 0;
-            }
-        });
-
-//        (String a, String b) -> {
-//            String ab = a + b;
-//            String ba = b + a;
-//
-//            return ab.compareTo(ba) > 0 ? -1 : 1;
-//        }
-
-        System.out.println(list.toString());
+        int ans = getOvertakes(ip, op);
+        System.out.println(ans);
     }
 }

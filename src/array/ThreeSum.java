@@ -12,6 +12,7 @@ public class ThreeSum {
         Arrays.sort(arr);
 
         for (int i = 0; i < arr.length; i++) {
+            // To get unique answers, continue in case of repeated number
             if (i > 0 && arr[i] == arr[i-1]) continue;
 
             int l = i+1, r = arr.length-1;

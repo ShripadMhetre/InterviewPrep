@@ -13,7 +13,7 @@ import static linkedlist.ReverseList.reverseList;
 
         Example:-
             Linked list: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
-            Result: 1 → 9 → 2 → 8 → 3 → 7 → 4 → 6 → 5
+            Result: 1 → 9 → 2 → 8 → 3 → 7 → 4 → 6    → 5
 
             Linked list: 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
             Result: 1 → 8 → 2 → 7 → 3 → 6 → 4 → 5
