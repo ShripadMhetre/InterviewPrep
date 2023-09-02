@@ -81,7 +81,8 @@ public class DijkstraAlgorithm {
         adj.get(4).add(new Edge(2, 9));
         adj.get(4).add(new Edge(3, 4));
 
-        int shortDist = dijkstra(nodes, adj, 0, 4);
-        System.out.println("Shortest Distance between source and destination: " + shortDist);
+        int ans1 = dijkstra(nodes, adj, 0, 4);
+        System.out.println("Shortest Distance between source and destination: " + ans1);
+
     }
 }

@@ -1,4 +1,4 @@
-package interviews;
+package graph.matrix;
 
 import java.util.LinkedList;
 import java.util.Queue;
