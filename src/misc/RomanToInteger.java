@@ -19,9 +19,9 @@ public class RomanToInteger {
         for (int i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             // Checks for the case of IV, XL, XC, CD, etc.
-            // i.e. current roman character value greater than previous one then substraction needed.
+            // i.e. current roman character value greater than previous one then subtraction needed.
             if (i > 0 && map.get(ch) > map.get(s.charAt(i-1))) {
-                ans += map.get(ch) -  2 * map.get(s.charAt(i-1));
+                ans += map.get(ch) - 2 * map.get(s.charAt(i-1));
             } else {
                 ans += map.get(ch);
             }

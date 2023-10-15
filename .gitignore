@@ -1,0 +1,11 @@
+.DS_Store
+
+# IntelliJ exclusions
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# output directory exclusions
+target/
+out/
