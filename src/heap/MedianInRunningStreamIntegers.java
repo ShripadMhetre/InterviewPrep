@@ -10,7 +10,7 @@ public class MedianInRunningStreamIntegers {
     PriorityQueue<Integer> minHeap;
 
     public MedianInRunningStreamIntegers() {
-        maxHeap = new PriorityQueue<>((a, b) -> b -a);
+        maxHeap = new PriorityQueue<>((a, b) -> b - a);
         minHeap = new PriorityQueue<>();
     }
 

@@ -16,6 +16,7 @@ public class MooreVotingAlgorithm {
         int ansIndex = 0;
         int count = 1;
 
+        // finding the candidate for majority element
         for (int i = 1; i < n; i++) {
             if (arr[i] == arr[ansIndex]) count++;
             else count--;
@@ -28,6 +29,7 @@ public class MooreVotingAlgorithm {
 
         count = 0;
 
+        // verifying if the chosen candidate is actually a majority element
         for (int i = 0; i < n; i++) {
             if (arr[i] == arr[ansIndex]) count++;
         }

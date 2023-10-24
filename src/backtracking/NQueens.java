@@ -15,7 +15,7 @@ public class NQueens {
         }
 
         // return false if two queens share the same `/` diagonal
-        for (int i = r, j = c; i >= 0 && j < mat.length; i--, j++) {
+        for (int i = r, j = c; i >=  0 && j < mat.length; i--, j++) {
             if (mat[i][j] == 'Q') return false;
         }
 

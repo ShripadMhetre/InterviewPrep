@@ -1,6 +1,5 @@
 package graph;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public class UnionFind {
@@ -26,10 +25,13 @@ public class UnionFind {
 
         if (rank[p1] > rank[p2]) {
             parent[p2] = p1;
-            rank[p1] += rank[p2];
-        } else {
+//            rank[p1] += rank[p2];
+        } else if (rank[p1] < rank[p2]) {
             parent[p1] = p2;
-            rank[p2] += rank[p1];
+//            rank[p2] += rank[p1];
+        } else {
+            parent[p2] = p1;
+            rank[p1] = rank[p1] + 1;
         }
 
         // return true as we successfully performed the union
@@ -46,11 +48,11 @@ public class UnionFind {
         }
 
         int[] rank = new int[n];
-        Arrays.fill(rank, 1);
+        Arrays.fill(rank, 0);
 
         for (int[] edge: edges) {
             if (!union(edge[0], edge[1], parent, rank)) {
-                System.out.println("False: " + edge[0] + " -> " + edge[1]);
+                System.out.println("Already Unioned: " + edge[0] + " -> " + edge[1]);
             } else {
                 System.out.println("True: " + edge[0] + " -> " + edge[1]);
             }

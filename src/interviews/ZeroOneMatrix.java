@@ -28,10 +28,10 @@ public class ZeroOneMatrix {
                     ans[i][j] = 0;
                     queue.add(new int[]{i, j});
                 } else {
-            ans[i][j] = -1;
+                    ans[i][j] = -1;
+                }
+            }
         }
-    }
-}
 
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         int level = 0;
@@ -39,14 +39,14 @@ public class ZeroOneMatrix {
             int currSize = queue.size();
             for (int i = 0; i < currSize; i++) {
                 int[] polled = queue.poll();
-                for (int[] direction: directions) {
+                for (int[] direction : directions) {
                     int x = polled[0] + direction[0];
                     int y = polled[1] + direction[1];
 
                     if (x < 0 || x >= n || y < 0 || y >= m) continue;
 
                     if (ans[x][y] == -1) {
-                        ans[x][y] = level+1;
+                        ans[x][y] = level + 1;
                         queue.add(new int[]{x, y});
                     }
                 }
@@ -58,7 +58,7 @@ public class ZeroOneMatrix {
     }
 
     public static void main(String[] args) {
-        int[][] grid = {{0,0,0},{0,1,0},{1,1,1}};
+        int[][] grid = {{0, 0, 0}, {0, 1, 0}, {1, 1, 1}};
 
         int[][] answer = updateMatrix(grid);
 

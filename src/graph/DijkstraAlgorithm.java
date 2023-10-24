@@ -19,7 +19,9 @@ class Edge {
     Dijkstra's Algorithm :-
         - Single Source Shortest Path Algorithm
         - Works for directed, undirected and also graph with cycles
-        - Algorithm won't work for negetive weights
+        - Algorithm won't work for negative weights
+
+        T.C. - O(V + ElogV)
  */
 public class DijkstraAlgorithm {
     private static int dijkstra(int nodes, List<List<Edge>> adj, int source, int destination) {
