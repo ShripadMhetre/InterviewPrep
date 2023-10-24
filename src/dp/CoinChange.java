@@ -23,6 +23,7 @@ import java.util.Arrays;
         Output: 0
  */
 public class CoinChange {
+    // same recursive solution can be turned into memoization by adding dp check before looping
     public static int coinChangeRecursive(int[] coins, int amount) {
         if (amount == 0) return 0;
 
@@ -41,28 +42,23 @@ public class CoinChange {
         return answer;
     }
 
-    public static int coinChangeBottomUp(int[] coins, int amount, int[] dp) {
+
+    public static int coinChangeBottomUp(int[] coins, int amount) {
         if (amount == 0) return 0;
 
-        int answer = Integer.MAX_VALUE;
+        int[] dp = new int[amount + 1];
+        Arrays.fill(dp, Integer.MAX_VALUE);
 
-        for (int i = 0; i < coins.length; i++) {
-            if (amount-coins[i] >= 0) {
-                int subAns = 0;
+        dp[0] = 0;
 
-                if (dp[amount-coins[i]] != -1) {
-                    subAns = dp[amount-coins[i]];
-                } else {
-                    subAns = coinChangeBottomUp(coins, amount-coins[i], dp);
-                }
-
-                if (subAns != Integer.MAX_VALUE && subAns+1 < answer) {
-                    answer = subAns+1;
+        for (int i = 1; i <= amount; i++) {
+            for (int j = 0; j < coins.length; j++) {
+                if(i - coins[j] >= 0 && dp[i - coins[j]] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], 1 + dp[i - coins[j]]);
                 }
             }
         }
-
-        return dp[amount] = answer;
+        return (dp[amount] == Integer.MAX_VALUE) ?  -1 : dp[amount];
     }
 
     public static void main(String[] args) {
@@ -71,10 +67,7 @@ public class CoinChange {
 
         System.out.println(coinChangeRecursive(coins, amount));
 
-        int[] dp = new int[amount+1];
-        Arrays.fill(dp, -1);
-        dp[0] = 0;
-
-        System.out.println(coinChangeBottomUp(coins, amount, dp));
+        // DP solution
+        System.out.println(coinChangeBottomUp(coins, amount));
     }
 }
