@@ -7,5 +7,6 @@
 *.iws
 
 # output directory exclusions
+*.class
 target/
 out/
