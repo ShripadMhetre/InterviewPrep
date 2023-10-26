@@ -28,8 +28,20 @@ package dp;
             exection -> execution (insert 'u')
  */
 public class EditDistance {
+    public static int recursive(String word1, String word2, int i, int j) {
+        if (i >= word1.length() || j >= word2.length()) return 0;
+
+        if (word1.charAt(i) == word2.charAt(j)) return recursive(word1, word2, i+1, j+1);
+
+        int insert = recursive(word1, word2, i, j+1) + 1;
+        int delete = recursive(word1, word2, i+1, j) + 1;
+        int replace = recursive(word1, word2, i+1, j+1) + 1;
+
+        return Math.min(insert, Math.min(delete, replace));
+    }
+
     // Time: O(N*M) and Space: O(N*M)
-    public static int solve(String word1, String word2) {
+    public static int bottomUp(String word1, String word2) {
         if ((word1.length() == 0 && word2.length() == 0) || word1.equals(word2)) return 0;
         if (word1.length() == 0) return word2.length();
         if (word2.length() == 0) return word1.length();
@@ -57,7 +69,9 @@ public class EditDistance {
 
     public static void main(String[] args) {
         String word1 = "abc", word2 = "dc";
-        int distance = solve(word1, word2);
+
+        int distance = recursive(word1, word2, 0, 0);
+//        int distance = bottomUp(word1, word2);
 
         System.out.println("Distance: " + distance);
     }
