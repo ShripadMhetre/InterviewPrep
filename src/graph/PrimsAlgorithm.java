@@ -10,11 +10,14 @@ public class PrimsAlgorithm {
         boolean[] visited = new boolean[nodes];
         PriorityQueue<Edge> minHeap = new PriorityQueue<>((e1, e2) -> e1.weight - e2.weight);
 
-        visited[source] = true;
+//        visited[source] = true;
+//
+//        for (Edge it: adj.get(source)) {
+//            minHeap.add(it);
+//        }
 
-        for (Edge it: adj.get(source)) {
-            minHeap.add(it);
-        }
+        // source to itself
+        minHeap.add(new Edge(source, 0));
 
         int minCost = 0;
         while (!minHeap.isEmpty()) {
@@ -23,7 +26,6 @@ public class PrimsAlgorithm {
             if (visited[minEdge.dest]) continue;
 
             visited[minEdge.dest] = true;
-
             minCost += minEdge.weight;
 
             for (Edge it: adj.get(minEdge.dest)) {
