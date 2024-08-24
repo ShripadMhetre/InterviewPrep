@@ -21,17 +21,17 @@ import java.util.Arrays;
         Output: 1
  */
 public class LongestIncreasingSubsequence {
-    public static int recursive(int[] arr, int currIndex, int currLen, int maxLen) {
-        if (currIndex == arr.length-1) {
-            maxLen = Math.max(maxLen, currLen);
-            return maxLen;
+    public static int recursive(int[] arr, int currIdx, int prevIdx) {
+        if (currIdx == arr.length) return 0;
+
+        int notTake = recursive(arr, currIdx+1, prevIdx);
+
+        int take = 0;
+        if (prevIdx == -1 || arr[currIdx] > arr[prevIdx]) {
+            take += 1 + recursive(arr, currIdx+1, currIdx);
         }
 
-        int incl = 0;
-        if (arr[currIndex] < arr[currIndex+1]) incl = recursive(arr, currIndex+1, currLen+1, maxLen);
-        int excl = recursive(arr, currIndex+1, currLen, maxLen);
-
-        return Math.max(incl, excl);
+        return Math.max(take, notTake);
     }
 
     public static int bottomUP(int[] arr) {
@@ -53,7 +53,7 @@ public class LongestIncreasingSubsequence {
 
     public static void main(String[] args) {
         int[] arr = {2, 1, 0, 2, 2, 3};
-//        int ans = recursive(arr, 0, 1, 1);
+//        int ans = recursive(arr, 0, -1);
         int ans = bottomUP(arr);
         System.out.println("LIS Length: " + ans);
     }

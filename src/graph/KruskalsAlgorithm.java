@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
 
@@ -78,6 +79,39 @@ public class KruskalsAlgorithm {
         return mstSum;
     }
 
+    // kruskal's without Disjoint Set
+    private static int kruskalsWithHashSet(int nodes, List<List<Edge>> adj) {
+        PriorityQueue<Edge> pq = new PriorityQueue<>((a, b) -> a.weight - b.weight);
+
+        // add all edges to the priority queue
+        for (int i = 0; i < nodes; i++) {
+            pq.addAll(adj.get(i));
+        }
+
+        boolean[] visited = new boolean[nodes];
+        // To store the result of MST
+        List<Edge> MST = new ArrayList<>();
+        int mstSum = 0;
+
+        while (!pq.isEmpty()) {
+            Edge polled = pq.poll();
+            int start = polled.src;
+            int dest = polled.dest;
+
+            // skip the edge if it forms cycle
+            if (visited[start] && visited[dest]) continue;
+
+            visited[start] = true;
+            visited[dest] = true;
+
+            MST.add(polled);
+            mstSum += polled.weight;
+
+        }
+
+        return mstSum;
+    }
+
     public static void main(String[] args) {
         int nodes = 5;
         List<List<Edge>> adj = new ArrayList<>(nodes);
@@ -96,6 +130,7 @@ public class KruskalsAlgorithm {
         adj.get(3).add(new Edge(3,4, 12));
 
         int minCost = kruskalsMST(nodes, adj);
+//        int minCost = kruskalsWithHashSet(nodes, adj);
         System.out.println("Cost of MST: " + minCost);
     }
 }

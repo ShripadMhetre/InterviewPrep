@@ -52,6 +52,7 @@ public class InversionCount {
         while (j < n2) {
             arr[low + k++] = a2[j++];
         }
+
         return inversions;
     }
 

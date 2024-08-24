@@ -49,9 +49,14 @@ public class ZeroOneKnapsack {
         return dp[n][w];
     }
 
-//    public static int recursive(int[] val, int[] wt, int w) {
-//
-//    }
+    public static int recursive(int[] val, int[] wt, int cap, int idx) {
+        if (idx == 0 || cap == 0) return 0;
+
+        if (wt[idx] > cap) {
+            return recursive(val, wt, cap, idx-1);
+        }
+        return Math.max(recursive(val, wt, cap, idx-1), val[idx] + recursive(val, wt, cap-wt[idx], idx-1));
+    }
 
     public static void main(String[] args) {
         int w = 10;
@@ -60,6 +65,7 @@ public class ZeroOneKnapsack {
         int[] wt = {5, 4, 6, 3};
 
         int res = solution(val, wt, w);
+//        int res = recursive(val, wt, w, n-1);
 
         System.out.println("Max Value: " + res);
     }

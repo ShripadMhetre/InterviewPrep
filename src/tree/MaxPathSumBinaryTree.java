@@ -1,6 +1,7 @@
 package tree;
 
 public class MaxPathSumBinaryTree {
+    // T.C. -> O(), S.C. -> O() uses postorder traversal
     public static int solution(Node root, int[] maxSum) {
         if (root == null) return 0;
 

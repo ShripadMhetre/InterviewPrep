@@ -43,6 +43,7 @@ public class CloneGraph {
     }
 
     public static Node dfsUtil(Node node, HashMap oldToNew) {
+        if (node == null) return null;
         if (oldToNew.containsKey(node)) return (Node) oldToNew.get(node);
 
         Node copy = new Node(node.val);

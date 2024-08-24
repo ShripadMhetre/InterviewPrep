@@ -33,11 +33,31 @@ package string;
         Explanation: "06" cannot be mapped to "F" because of the leading zero ("6" is different from "06").
  */
 public class DecodeWays {
-//    public static int solve(String str) {
-//
-//    }
-//
-//    public static void main(String[] args) {
-//
-//    }
+    public static int solve(String s) {
+        int N = s.length();
+        int[] dp = new int[N+1];
+
+        // only one way to decode an empty string
+        dp[0] = 1;
+        // if the only char is 0 then no way to decode else 1
+        dp[1] = s.charAt(0) == '0' ? 0 : 1;
+
+        for (int i = 2; i <= N; i++) {
+            int oneDigit = Integer.valueOf(s.substring(i-1, i));
+            int twoDigits = Integer.valueOf(s.substring(i-2, i));
+
+            // if single digit in not zero
+            if (oneDigit >= 1) dp[i] = dp[i-1];
+            // only if number from 2 digits is valid
+            if (twoDigits >= 10 && twoDigits <= 26) dp[i] += dp[i-2];
+        }
+
+        return dp[N];
+    }
+
+    public static void main(String[] args) {
+        String s = "11";
+//        String s = "01";
+        System.out.println(solve(s));
+    }
 }

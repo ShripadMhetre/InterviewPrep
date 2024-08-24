@@ -86,11 +86,11 @@ public class KMPAlgorithm {
     }
 
     public static void main(String[] args) {
-//        String str = "oonionssionspl";
-//        String pat = "onions";
+        String str = "oonionssionspl";
+        String pat = "onions";
 
-        String str = "aaaxaaaa";
-        String pat = "aaaa";
+//        String str = "aaaxaaaa";
+//        String pat = "aaaa";
 
         KMP(str, pat);
     }

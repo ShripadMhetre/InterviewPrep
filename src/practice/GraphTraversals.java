@@ -42,15 +42,20 @@ public class GraphTraversals {
         ArrayList<Integer> ans = new ArrayList<>();
         boolean[] visited = new boolean[N];
         Queue<Integer> queue = new LinkedList<>();
-
+        int[] distance = new int[N];
+        Arrays.fill(distance, 0);
         for (int i = 0; i < N; i++) {
-            if (!visited[i]) bfsUtil(adj, queue, visited, i, ans);
+            if (!visited[i]) bfsUtil(adj, queue, visited, i, ans, distance);
         }
-
+        for (int i = 0; i < distance.length; i++) {
+            System.out.println("Distance of " + i + ": "  + distance[i]);
+        }
         return ans;
     }
-    private static void bfsUtil(List<List<Integer>> adj, Queue<Integer> queue, boolean[] visited, int source, ArrayList<Integer> ans) {
+    private static void bfsUtil(List<List<Integer>> adj, Queue<Integer> queue, boolean[] visited, int source, ArrayList<Integer> ans, int[] distance) {
         queue.add(source);
+        distance[source] = 0;
+
         while (!queue.isEmpty()) {
             int node = queue.poll();
 
@@ -60,7 +65,11 @@ public class GraphTraversals {
             ans.add(node);
 
             for (int neigh: adj.get(node)) {
-                if (!visited[neigh]) queue.add(neigh);
+                if (!visited[neigh]) {
+                    queue.add(neigh);
+                    distance[neigh] = distance[node] + 1;
+//                    System.out.println("Distance of " + neigh + ": " + distance[neigh]);
+                }
             }
         }
     }
@@ -80,8 +89,8 @@ public class GraphTraversals {
         fillUnweightedGraph(adj);
 
         // DFS Traversal
-        ArrayList<Integer> dfsTraversal = dfs(nodes, adj);
-        System.out.println("DFS: " + dfsTraversal.toString());
+//        ArrayList<Integer> dfsTraversal = dfs(nodes, adj);
+//        System.out.println("DFS: " + dfsTraversal.toString());
 
         // BFS Traversal
         ArrayList<Integer> bfsTraversal = bfs(nodes, adj, 0);
@@ -108,19 +117,19 @@ public class GraphTraversals {
 
         adj.get(1).add(0);
         adj.get(1).add(3);
-        adj.get(1).add(2);
+//        adj.get(1).add(2);
 
         adj.get(2).add(0);
-        adj.get(2).add(1);
+//        adj.get(2).add(1);
         adj.get(2).add(4);
-        adj.get(2).add(3);
+//        adj.get(2).add(3);
 
         adj.get(3).add(1);
-        adj.get(3).add(2);
-        adj.get(3).add(4);
+//        adj.get(3).add(2);
+//        adj.get(3).add(4);
 
         adj.get(4).add(2);
-        adj.get(4).add(3);
+//        adj.get(4).add(3);
     }
     private static void fillWeightedGraph(List<List<Edge>> adj) {
         adj.get(0).add(new Edge(1, 4));

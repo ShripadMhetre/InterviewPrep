@@ -3,7 +3,7 @@ package algorithms.slidingwindow;
 import java.util.HashMap;
 
 public class MinimumWindowSubstring {
-    // TC - O(2*N + M) ~ O(N+M)
+    // TC - O(2*N + M) ~ O(N+M), S.C. -> O(N)
     public static String minWindow(String s, String t) {
         int sLength = s.length(), tLength = t.length();
 
