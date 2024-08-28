@@ -1,5 +1,18 @@
 package dp;
 
+/*
+    Q. Given a string s, find the longest palindromic subsequence's length in s.
+
+    Example 1:
+    Input: s = "bbbab"
+    Output: 4
+    Explanation: One possible longest palindromic subsequence is "bbbb".
+
+    Example 2:
+    Input: s = "cbbd"
+    Output: 2
+    Explanation: One possible longest palindromic subsequence is "bb".
+ */
 public class LongestPalindromicSubstring {
     public static String solution(String str) {
         boolean[][] dp = new boolean[str.length()][str.length()];

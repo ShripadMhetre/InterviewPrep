@@ -21,6 +21,7 @@ import java.util.Arrays;
         Output: 1
  */
 public class LongestIncreasingSubsequence {
+    // T.C. -> O(N2), S.C. -> O(N)
     public static int recursive(int[] arr, int currIdx, int prevIdx) {
         if (currIdx == arr.length) return 0;
 
@@ -47,6 +48,16 @@ public class LongestIncreasingSubsequence {
                 }
             }
         }
+
+//        // alternative to above loop
+//        for (int i = 0; i < arr.length; i++) {
+//            for (int j = i-1; j >= 0; j--) {
+//                if (arr[i] > arr[j]) {
+//                    dp[i] = Math.max(dp[i], 1+dp[j]);
+//                    maxLen = Math.max(maxLen, dp[i]);
+//                }
+//            }
+//        }
 
         return maxLen;
     }

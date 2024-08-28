@@ -1,5 +1,11 @@
 package dp;
 
+/*
+    Q. We are given an “N*M” matrix of integers. We need to find a path from the top-left corner to the bottom-right corner
+        of the matrix, such that there is a minimum cost past that we select.
+        At every cell, we can move in only two directions: right and bottom. The cost of a path is given as the sum of
+        values of cells of the given matrix.
+ */
 public class MinPathSum {
     // Brute Force - DFS approach
     public static int recursive(int i, int j, int[][] grid){
@@ -36,21 +42,21 @@ public class MinPathSum {
         dp[0][0] = grid[0][0];
 
         // initialize top row
-        for(int i=1; i<n; i++){
+        for (int i=1; i<n; i++) {
             dp[0][i] = dp[0][i-1] + grid[0][i];
         }
 
         // initialize left column
-        for(int j=1; j<m; j++){
+        for (int j=1; j<m; j++) {
             dp[j][0] = dp[j-1][0] + grid[j][0];
         }
 
         // fill up the dp table
-        for(int i=1; i<m; i++){
-            for(int j=1; j<n; j++){
-                if(dp[i-1][j] > dp[i][j-1]){
+        for (int i=1; i<m; i++) {
+            for (int j=1; j<n; j++) {
+                if (dp[i-1][j] > dp[i][j-1]) {
                     dp[i][j] = dp[i][j-1] + grid[i][j];
-                }else{
+                } else {
                     dp[i][j] = dp[i-1][j] + grid[i][j];
                 }
             }

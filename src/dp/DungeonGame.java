@@ -17,13 +17,13 @@ public class DungeonGame {
         // last cell min health calculation
         dp[m-1][n-1] = Math.max(1-d[m-1][n-1],1);
 
-        // last column calculations
+        // last row calculations
         for(int i = n - 2; i >= 0; i--){
             int val = d[m-1][i];
             dp[m-1][i] = Math.max(dp[m-1][i+1] - val,1);
         }
 
-        // last row calculations
+        // last col calculations
         for(int i = m - 2; i >= 0; i--){
             int val = d[i][n-1];
             dp[i][n-1] = Math.max(dp[i+1][n-1] - val,1);

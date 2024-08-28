@@ -78,6 +78,7 @@ public class FractionalKnapsack {
                 break;
             }
         }
+
         return totalValue;
     }
 
