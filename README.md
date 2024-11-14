@@ -1,2 +1,2 @@
 # InterviewPrep
-Collection of Data Structure &amp; Algorithms Problems, Design Patterns and System Design Concepts for Interview Preparation
+My collection of Data Structure &amp; Algorithms Problems for the Interview Preparation
