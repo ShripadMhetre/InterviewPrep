@@ -18,20 +18,20 @@ public class DungeonGame {
         dp[m-1][n-1] = Math.max(1-d[m-1][n-1],1);
 
         // last row calculations
-        for(int i = n - 2; i >= 0; i--){
+        for (int i = n - 2; i >= 0; i--) {
             int val = d[m-1][i];
             dp[m-1][i] = Math.max(dp[m-1][i+1] - val,1);
         }
 
         // last col calculations
-        for(int i = m - 2; i >= 0; i--){
+        for (int i = m - 2; i >= 0; i--) {
             int val = d[i][n-1];
             dp[i][n-1] = Math.max(dp[i+1][n-1] - val,1);
         }
 
         // remaining matrix calculation
-        for(int i = m-2; i >= 0; i--){
-            for(int j = n-2; j >= 0; j--){
+        for (int i = m-2; i >= 0; i--) {
+            for (int j = n-2; j >= 0; j--) {
                 int val = d[i][j];
                 int min = Math.min(dp[i][j+1], dp[i+1][j]);
                 dp[i][j] = Math.max(min-val, 1);

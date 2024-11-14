@@ -19,6 +19,7 @@ public class Trie {
     // Insert a word into Trie
     public void insert(String word) {
         TrieNode p = root;
+
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             int index = c - 'a';
@@ -31,6 +32,7 @@ public class Trie {
                 p = p.children[index];
             }
         }
+
         p.isLeaf = true;
     }
 

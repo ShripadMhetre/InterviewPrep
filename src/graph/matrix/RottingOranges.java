@@ -12,8 +12,8 @@ public class RottingOranges {
 
         int[][] directions = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
-        for(int i=0;i<m;i++) {
-            for(int j=0;j<n;j++) {
+        for(int i = 0; i < m; i++) {
+            for(int j = 0; j < n; j++) {
                 if(grid[i][j] == 1) {
                     freshCount++;
                 } else if(grid[i][j] == 2) {
@@ -23,7 +23,7 @@ public class RottingOranges {
         }
         while(!queue.isEmpty() && freshCount > 0) {
             int queueLength = queue.size();
-            for(int i=0;i<queueLength;i++) {
+            for(int i = 0; i < queueLength; i++) {
                 int[] polled = queue.poll();
                 for(int[] direction: directions) {
                     int x = polled[0] + direction[0], y = polled[1] + direction[1];

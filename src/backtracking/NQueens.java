@@ -64,6 +64,7 @@ public class NQueens {
         for (char[] chars: mat) {
             System.out.println(Arrays.toString(chars).replaceAll(",", ""));
         }
+
         System.out.println();
     }
 }
