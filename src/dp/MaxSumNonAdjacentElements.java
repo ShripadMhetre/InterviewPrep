@@ -10,7 +10,7 @@ public class MaxSumNonAdjacentElements {
         int inc = arr[0];   // sum including current element
         int exc = 0;        // sum excluding current element
 
-        for (int i = 2; i < n; i++) {
+        for (int i = 1; i < n; i++) {
             int newInc = exc + arr[i];  // sum including curr element will be max sum excluding prev element plus curr element.
             int newExc = Math.max(inc, exc);    // new excluding will be max of previous inc and exc sum.
 

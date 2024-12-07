@@ -1,4 +1,7 @@
 package algorithms;
+
+import java.util.ArrayList;
+
 /*
     pat = "bba" string = "aabbbba"
 
@@ -22,6 +25,8 @@ public class KMPAlgorithm {
         // create LPS array for pattern
         computeLPS(pat, lps);
 
+        ArrayList<Integer> res = new ArrayList<>();
+
         // KMP logic once we have LPS array of pattern
         int i = 0, j = 0;   // i for string and j for pattern
         while (i < l1) {
@@ -30,19 +35,20 @@ public class KMPAlgorithm {
                 i++;
                 j++;
             } else {
-                // if we already at 0th index of pat i.e. no partial match
-                // then simply start from next character of string
-                if (j == 0) {
-                    i++;
-                } else {  // partial match hence we won't compare from the start of pattern
+                // Use lps value of previous index to avoid redundant comparisons
+                if (j != 0) {
                     j =  lps[j-1];
+                } else {
+                    // if we already at 0th index of pat i.e. no partial match
+                    // then simply start from next character of string
+                    i++;
                 }
             }
 
-            // returning as soon as we find first occurrence of pattern
+            // If the entire pattern is matched store the start index in result
             if (j == pat.length()) {
                 System.out.println("Index of occurrence: " + (i - pat.length()));
-                j = 0;  // resetting the pattern index to match next occurrences in string
+                j = lps[j - 1];;  // resetting the pattern index to match next occurrences in string
             }
         }
     }
@@ -51,38 +57,23 @@ public class KMPAlgorithm {
         // i -> current character index
         int prevLPS = 0, i = 1;
 
-        while (i < lps.length) {
+        while (i < pat.length()) {
             // if characters match then incrementing upon previous lps value
             if (pat.charAt(i) ==  pat.charAt(prevLPS)) {
-                lps[i] = prevLPS + 1;
                 prevLPS++;
+                lps[i] = prevLPS;
                 i++;
             } else {
-                if (prevLPS == 0) {
+                if (prevLPS != 0) {
+                    // Update len to the previous lps value to avoid redundant comparisons
+                    prevLPS = lps[prevLPS-1];
+                } else {
+                    // If no matching prefix found, set lps[i] to 0
                     lps[i] = 0;
                     i++;
-                } else {
-                    prevLPS = lps[prevLPS-1];
                 }
             }
         }
-
-        // Using index for previous (i.e. prevInd) instead of prevLPS
-//        int prevInd = 0, i = 1;
-//        while (i < pat.length()) {
-//            if (pat.charAt(i) == pat.charAt(lps[prevInd])) {
-//                lps[i] = lps[prevInd] + 1;
-//                prevInd = i;
-//                i++;
-//            } else {
-//                if (lps[prevInd] == 0) {
-//                    lps[i] = 0;
-//                    i++;
-//                } else {
-//                    prevInd = lps[lps[prevInd]-1];
-//                }
-//            }
-//        }
     }
 
     public static void main(String[] args) {

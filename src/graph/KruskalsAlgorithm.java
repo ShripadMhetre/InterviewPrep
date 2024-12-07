@@ -56,6 +56,7 @@ public class KruskalsAlgorithm {
             this.weight = weight;
         }
     }
+
     private static int kruskalsMST(int nodes, List<List<Edge>> adj) {
         PriorityQueue<Edge> pq = new PriorityQueue<>((e1, e2) -> e1.weight - e2.weight);
 

@@ -48,8 +48,9 @@ public class DijkstraAlgorithm {
 
                 if (!visited[node] && (distance[v] + dist < distance[node])) {
                     distance[node] = distance[v] + dist;
-                    it.weight = distance[v] + dist;
-                    minHeap.add(it);
+//                    it.weight = distance[v] + dist;
+//                    minHeap.add(it);
+                    minHeap.add(new Edge(node, distance[node]));
                 }
             }
         }
